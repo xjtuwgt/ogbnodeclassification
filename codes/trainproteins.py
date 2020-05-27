@@ -30,7 +30,7 @@ def parse_args(args=None):
     parser.add_argument("--dataset", type=str, default='ogbn_proteins')
     parser.add_argument("--epochs", type=int, default=300,
                         help="number of training epochs")
-    parser.add_argument("--num_heads", type=int, default=4,
+    parser.add_argument("--num_heads", type=int, default=1,
                         help="number of hidden attention heads")
     parser.add_argument("--num_layers", type=int, default=1,
                         help="number of hidden layers")

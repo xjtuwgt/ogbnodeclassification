@@ -38,7 +38,7 @@ def parse_args(args=None):
                         help="top k selection")
     parser.add_argument("--project_dim", type=int, default=-1,
                         help="projection dimension")
-    parser.add_argument("--num_hidden", type=int, default=16,
+    parser.add_argument("--num_hidden", type=int, default=8,
                         help="number of hidden units")
     parser.add_argument("--residual", action="store_true", default=True,
                         help="use residual connection")
@@ -49,7 +49,7 @@ def parse_args(args=None):
     parser.add_argument("--edge_drop", type=float, default=.1,
                         help="edge dropout")
     parser.add_argument("--clip", type=float, default=1.0, help="grad_clip")
-    parser.add_argument("--alpha", type=float, default=.6,
+    parser.add_argument("--alpha", type=float, default=.2,
                         help="alpha")
     parser.add_argument("--hop_num", type=int, default=3,
                         help="hop number")

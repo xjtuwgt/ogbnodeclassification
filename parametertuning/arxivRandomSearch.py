@@ -48,4 +48,4 @@ def generate_random_search_bash(task_num, data_name):
     print('{} jobs have been generated'.format(task_num))
 
 if __name__ == '__main__':
-    generate_random_search_bash(data_name='ogbn_arxiv', task_num=60)
+    generate_random_search_bash(data_name='ogbn_arxiv', task_num=2)

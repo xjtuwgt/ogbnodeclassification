@@ -37,7 +37,7 @@ then
 
 echo "Start Training......"
 
-/mnt/cephfs2/asr/users/ming.tu/sgetools/run_gpu.sh python -u $CODE_PATH/trainproteins.py --do_train \
+  python -u $CODE_PATH/trainproteins.py --do_train \
     --cuda \
     --data_path $DATA_PATH\
     --dataset $DATASET\

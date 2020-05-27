@@ -206,7 +206,6 @@ def ogb2dgl(args):
 
 def main(args):
     # load and preprocess dataset
-    check_mem()
     #+++++
     model_save_path = preprocess(args)
     #+++++

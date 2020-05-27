@@ -120,7 +120,13 @@ class gtransformerlayer(nn.Module):
 
         rst_ff = self.feed_forward(self.ff_norm(rst))
         rst = rst + self.feat_drop(rst_ff)
-        attations = graph.edata['a']
+        # +++++++
+        attations = graph.edata.pop('a')
+        for key, value in graph.ndata.items():
+            graph.ndata.pop(key)
+        for key, value in graph.edata.items():
+            graph.edata.pop(key)
+        # +++++++
         return rst, attations
 
     def ppr_estimation(self, graph: DGLGraph):

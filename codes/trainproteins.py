@@ -105,6 +105,13 @@ def evaluate(model, features, labels, mask):
         true_labels = labels[mask]
         return rocauc(predictions, true_labels)
 
+
+def check_mem():
+    mem = os.popen('"<path\\to\\NVSMI>\\nvidia-smi" --query-gpu=memory.total,memory.used --format=csv,nounits,noheader').read().split(
+        ",")
+    print(mem)
+    return mem
+
 def set_logger(args):
     '''
     Write logs to checkpoint and console
@@ -158,6 +165,7 @@ def args2foldername(args):
 def ogb2dgl(args):
     data = DglNodePropPredDataset(name=args.dataset, root=args.data_path)
     graph, labels = data[0]
+    print(graph.number_of_edges())
 
     def node_feature_aggregation(g: DGLGraph):
         start_time = time.time()
@@ -198,6 +206,7 @@ def ogb2dgl(args):
 
 def main(args):
     # load and preprocess dataset
+    check_mem()
     #+++++
     model_save_path = preprocess(args)
     #+++++

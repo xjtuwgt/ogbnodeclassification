@@ -122,10 +122,6 @@ class gtransformerlayer(nn.Module):
         rst = rst + self.feat_drop(rst_ff)
         # +++++++
         attations = graph.edata.pop('a')
-        for key, value in graph.ndata.items():
-            graph.ndata.pop(key)
-        for key, value in graph.edata.items():
-            graph.edata.pop(key)
         # +++++++
         return rst, attations
 

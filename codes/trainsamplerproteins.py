@@ -22,7 +22,10 @@ from hugeGraphUtils.graphSampler import graph_k_neighbor_sampler, graph_ratio_ne
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser(description='GDT')
-    parser.add_argument('--cuda', default=False, action='store_true', help='use GPU')
+    if torch.cuda.is_available():
+        parser.add_argument('--cuda', default=True, action='store_true', help='use GPU')
+    else:
+        parser.add_argument('--cuda', default=False, action='store_true', help='use GPU')
     parser.add_argument('--do_train', default=True, action='store_true')
     parser.add_argument("--data_path", type=str, default='../dataset')
     parser.add_argument("--dataset", type=str, default='ogbn_proteins')

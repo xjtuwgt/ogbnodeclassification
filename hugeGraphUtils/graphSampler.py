@@ -86,11 +86,7 @@ def graph_construction(graph: DGLGraph, edge_pairs):
     num_nodes = graph.number_of_nodes()
     new_graph.add_nodes(num_nodes)
     src_nodes, dest_nodes = edge_pairs[:,0], edge_pairs[:,1]
-    edge_ids = graph.edge_ids(src_nodes, dest_nodes)
-    # print('here', edge_ids.shape, src_nodes.shape)
     new_graph.add_edges(src_nodes, dest_nodes)
     for key, value in graph.ndata.items():
         new_graph.ndata[key] = value
-    for key, value in graph.edata.items():
-        new_graph.edata[key] = value[edge_ids]
     return new_graph

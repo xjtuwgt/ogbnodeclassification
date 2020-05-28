@@ -206,7 +206,9 @@ def main(args):
     model_save_path = preprocess(args)
     #+++++
     graph, features, labels, train_mask, val_mask, test_mask, n_classes = ogb2dgl(args)
-    graph
+
+    graph = graph_k_neighbor_sampler(graph=graph, knn=args.sample_knn)
+    # graph
     print(graph.number_of_nodes(), features.shape, labels.shape, train_mask.shape, val_mask.shape, test_mask.shape)
     num_feats = features.shape[1]
     n_edges = graph.number_of_edges()

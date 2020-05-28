@@ -66,12 +66,13 @@ class GDTSampler(nn.Module):
             h = self.project(self.feat_drop_out(inputs))
         else:
             h = inputs
-        if self.training:
-            g = self.graph_sampler()
-        else:
-            g = self.g
+        # if self.training:
+        #     g = self.graph_sampler()
+        # else:
+        #     g = self.g
+
         for l in range(self.num_layers):
-            h, _ = self.gdt_layers[l](g, h)
+            h, _ = self.gdt_layers[l](self.g, h)
         logits = self.classifier(h)
         return logits
 
